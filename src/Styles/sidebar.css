@@ -1,0 +1,195 @@
+.chat-sidebar {
+    width: 260px;
+    height: 100%;
+    background: rgba(10, 15, 30, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 10;
+    overflow: hidden;
+}
+
+.chat-sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.collapse-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.collapse-btn:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.chat-sidebar.collapsed .sidebar-header {
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px 10px;
+}
+
+.sidebar-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.sidebar-loading, .no-sessions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    text-align: center;
+    gap: 10px;
+}
+
+.empty-icon {
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
+
+.session-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.session-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: 12px;
+}
+
+.session-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.session-item.active {
+    background: rgba(0, 240, 255, 0.1);
+    border-left: 3px solid #00f0ff;
+}
+
+.session-icon {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+}
+
+.session-item.active .session-icon {
+    color: #00f0ff;
+}
+
+.session-details {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 3px;
+}
+
+.session-name {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.session-item.active .session-name {
+    font-weight: 500;
+}
+
+.session-date {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+    .chat-sidebar {
+        position: absolute;
+        height: 100%;
+        z-index: 100;
+        background: rgba(5, 7, 15, 0.98);
+        border-right: 1px solid rgba(0, 229, 229, 0.3);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.8);
+        transform: translateX(0);
+        overflow: visible;
+        padding-top: 105px;
+    }
+
+    .chat-sidebar.collapsed {
+        transform: translateX(-100%);
+        width: 260px;
+    }
+
+    .chat-sidebar.collapsed .sidebar-header {
+        position: absolute;
+        right: -42px;
+        top: 120px;
+        width: 42px;
+        padding: 0;
+        border: none;
+        justify-content: center;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(0, 229, 229, 0.4);
+        border-left: none;
+        border-radius: 0 8px 8px 0;
+        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .chat-sidebar.collapsed .collapse-btn {
+        padding: 12px 8px;
+        color: #00e5e5;
+        width: 100%;
+    }
+}

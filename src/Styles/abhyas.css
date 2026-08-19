@@ -1,0 +1,33 @@
+/* css file  */
+/* =========================================
+   ABHYAS (INTERVIEW) SPECIFIC STYLES
+========================================= */
+
+/* Override the brand text color with a warm, energetic gradient */
+.chat-heading .chat-brand {
+    background: linear-gradient(100deg, #ffd700 0%, #ff8c00 30%, #ff0080 55%, #8a2be2 80%, #ffd700 100%);
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 24px rgba(255, 140, 0, 0.35));
+    animation: logoShimmer 7s ease-in-out infinite;
+}
+
+/* Make the user message bubbles match the warm theme slightly */
+.chat-message.user {
+    background: rgba(255, 140, 0, 0.15);
+    border: 1px solid rgba(255, 140, 0, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 140, 0, 0.1);
+}
+
+.chat-message.user:hover {
+    border-color: rgba(255, 140, 0, 0.6);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35), 0 0 18px rgba(255, 140, 0, 0.15), inset 0 0 15px rgba(255, 140, 0, 0.12);
+}
+
+.chat-message.user .message-name { color: #ffbc00; }
+.chat-message.user .message-name::before {
+    background: #ffbc00;
+    box-shadow: 0 0 8px #ffbc00;
+}

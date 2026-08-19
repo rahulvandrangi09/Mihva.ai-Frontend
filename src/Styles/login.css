@@ -1,0 +1,168 @@
+/* =========================================
+   AUTHENTICATION STYLES (login.css)
+========================================= */
+
+.auth-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    z-index: 2;
+    /* Added 120px top padding to clear the 100px fixed navbar */
+    padding: 120px 20px 60px; 
+    /* Enable vertical scrolling specifically for the auth pages */
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar for the Auth Page to match the space theme */
+.auth-container::-webkit-scrollbar { width: 6px; }
+.auth-container::-webkit-scrollbar-track { background: transparent; }
+.auth-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--c-cyan), var(--c-lime));
+    border-radius: 10px;
+}
+
+.auth-glass-panel {
+    /* Using margin: auto instead of flex justify-content ensures the form stays 
+       centered on large screens, but doesn't cut off the top on small screens */
+    margin: auto; 
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(0, 229, 229, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 229, 229, 0.05);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h2 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(100deg, #7bffff 0%, var(--c-cyan) 30%, var(--c-lime) 60%, #7bffff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: logoShimmer 6s linear infinite;
+}
+
+.auth-header p {
+    color: var(--c-muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.auth-input-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--c-text);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.auth-input-wrapper {
+    position: relative;
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(134, 213, 98, 0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.auth-input-wrapper:focus-within {
+    border-color: rgba(0, 229, 229, 0.6);
+    background: rgba(15, 23, 42, 0.9);
+    box-shadow: 0 0 20px rgba(0, 229, 229, 0.15), inset 0 0 10px rgba(0, 229, 229, 0.05);
+}
+
+.auth-input-wrapper input {
+    width: 100%;
+    padding: 14px 16px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #f8fafc;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+.auth-input-wrapper input::placeholder {
+    color: rgba(148, 163, 184, 0.5);
+}
+
+.auth-submit-btn {
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0, 229, 229, 0.2), rgba(134, 213, 98, 0.2));
+    border: 1px solid rgba(0, 229, 229, 0.4);
+    color: var(--c-text);
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.auth-submit-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 229, 229, 0.4), rgba(134, 213, 98, 0.4));
+    border-color: rgba(134, 213, 98, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 229, 229, 0.25);
+    color: #fff;
+}
+
+.auth-submit-btn:active {
+    transform: translateY(1px);
+}
+
+.auth-footer {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--c-muted);
+}
+
+.auth-link {
+    color: var(--c-cyan);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.auth-link:hover {
+    color: var(--c-lime);
+    text-decoration: underline;
+}
+
+/* Hide navigation links inside the auth panel if viewed on tiny mobile screens */
+@media (max-width: 400px) {
+    .auth-glass-panel {
+        padding: 30px 20px;
+    }
+}

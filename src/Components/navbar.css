@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* =========================================
+   TOKENS
+========================================= */
+:root {
+    --c-cyan: #00e5e5;
+    --c-lime: #86d562;
+    --c-magenta: #ff2fb1;
+    --c-violet: #7c5cff;
+    --c-bg-deep: #05070f;
+    --c-text: #e6edf7;
+    --c-muted: #8b96ab;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.ai-navbar {
+    height: 90px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 40px;
+    position: fixed;
+    z-index: 100;
+    
+    /* REMOVED: The fade-to-transparent gradient */
+    /* ADDED: A consistent, deep semi-transparent background */
+    background: rgba(2, 6, 23, 0.85); 
+    
+    /* ADDED: A subtle cyan border to cleanly separate the navbar from the scrolling content */
+    border-bottom: 1px solid rgba(0, 229, 229, 0.15);
+    
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: background 0.4s ease;
+}
+
+/* Entrance animation for the whole bar */
+.animate-fade-in-down {
+    opacity: 0;
+    animation: navFadeInDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+@keyframes navFadeInDown {
+    0% { opacity: 0; transform: translateY(-18px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Brand Line Container */
+.brand-line-container {
+    position: absolute;
+    left: 0;
+    right: 120px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1;
+}
+
+/* Dynamic moving gradient lines */
+.animated-line {
+    height: 2px;
+    background: linear-gradient(90deg, var(--c-cyan), var(--c-lime), var(--c-magenta), var(--c-violet), var(--c-cyan));
+    background-size: 300% 100%;
+    animation: animateGradientLine 6s linear infinite;
+    opacity: 0.85;
+    box-shadow: 0 0 8px rgba(0, 229, 229, 0.35);
+    border-radius: 2px;
+}
+
+.left-line {
+    width: 30px;
+}
+
+.right-line {
+    flex-grow: 1;
+}
+
+@keyframes animateGradientLine {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+}
+
+.ai-logo-link {
+    text-decoration: none;
+}
+
+.ai-logo {
+    position: relative;
+    color: var(--c-cyan);
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.3px;
+    background: linear-gradient(100deg, #7bffff 0%, var(--c-cyan) 35%, var(--c-lime) 65%, #7bffff 100%);
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 12px rgba(0, 229, 229, 0.45));
+    transform: translateY(-3px);
+    animation: logoShimmer 6s ease-in-out infinite, logoPulse 3.4s ease-in-out infinite;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.ai-logo:hover {
+    filter: drop-shadow(0 0 20px rgba(0, 229, 229, 0.75));
+    transform: translateY(-4px) scale(1.03);
+}
+
+@keyframes logoShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 250% center; }
+}
+
+@keyframes logoPulse {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 229, 229, 0.35)); }
+    50% { filter: drop-shadow(0 0 18px rgba(0, 229, 229, 0.6)); }
+}
+
+/* =========================================
+   LINKS & LOGIN BUTTON
+========================================= */
+
+.ai-nav-links {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -10px);
+    display: flex;
+    gap: 45px;
+    z-index: 2;
+}
+
+.ai-nav-links a {
+    position: relative;
+    color: var(--c-text);
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Animated underline sweep */
+.ai-nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--c-cyan), var(--c-lime));
+    box-shadow: 0 0 8px rgba(0, 229, 229, 0.6);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-nav-links a:hover {
+    color: var(--c-cyan);
+    text-shadow: 0 0 12px rgba(0, 229, 229, 0.55);
+}
+
+.ai-nav-links a:hover::after {
+    width: 100%;
+}
+
+.ai-nav-links a:focus-visible {
+    outline: 2px solid var(--c-cyan);
+    outline-offset: 4px;
+    border-radius: 3px;
+}
+
+.login-btn {
+    background: transparent;
+    border: 1.5px solid rgba(134, 213, 98, 0.4);
+    color: var(--c-text);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    padding: 9px 20px;
+    border-radius: 999px;
+    /* Alignment */
+    margin-left: auto;
+    position: relative;
+    top: -22px;
+    z-index: 2;
+}
+
+.login-btn:hover {
+    color: #02160f;
+    background: linear-gradient(100deg, var(--c-lime), var(--c-cyan));
+    border-color: transparent;
+    box-shadow: 0 0 22px rgba(134, 213, 98, 0.45);
+    transform: translateY(-1px) scale(1.05);
+}
+
+.login-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.login-btn:focus-visible {
+    outline: 2px solid var(--c-cyan);
+    outline-offset: 3px;
+}
+
+/* =========================================
+   RESPONSIVENESS
+========================================= */
+
+@media (max-width: 768px) {
+    .ai-navbar {
+        padding-right: 15px;
+        height: 105px;
+    }
+    .brand-line-container { top: 32%; right: 90px; }
+    .left-line { width: 10px; }
+    .ai-logo { font-size: 24px; }
+    .ai-nav-links { 
+        bottom: 15px; 
+        transform: translate(-50%, 0);
+        gap: 20px; 
+        display: flex;
+    }
+    .ai-nav-links a { font-size: 13px; }
+    .login-btn { font-size: 11px; top: -14px; padding: 6px 12px; background: rgba(2, 6, 23, 0.85); }
+    .login-btn:hover { transform: translateY(-2px) scale(1.05); }
+    .login-btn:active { transform: translateY(-1px) scale(0.98); }
+}
+
+@media (max-width: 500px) {
+    .ai-nav-links { 
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-logo,
+    .animated-line,
+    .animate-fade-in-down {
+        animation: none !important;
+    }
+}
